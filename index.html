@@ -8,7 +8,7 @@
     </head>
     
     <body>
-        <form id="formAnggota" action="">
+        <form onsubmit="" id="formAnggota" action="">
             <label for="nama">nama</label>
             <input type="text" id="nama">
         <label for="kelas">kelas</label>
@@ -26,10 +26,11 @@
             <tr>
                 <th>Nama</th>
                 <th>Kelas</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody id="dataAnggota"></tbody>
-    </table>
+    </table><br>
     
     <form id="formTask" action="" 
         <label for="kelasAnggota">Pilih anggota</label>
@@ -49,7 +50,7 @@
         <input type="submit" id="btnTask">
     </form>
 
-    <table id="listTugas">
+    <table id="listTask">
         <thead>
             <tr>
                 <th>Nama</th>
@@ -58,13 +59,7 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>Biru</td>
-                <td>XII</td>
-                <td>Ngoding</td>
-                <td><button id="btnHapusTask">Hapus</button></td>
-            </tr>
+        <tbody id="dataTask">
         </tbody>
     </table>
     <script src="js/index.js"></script>
