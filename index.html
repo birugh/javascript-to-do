@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <form id="formAnggota" action="">
-        <label for="nama">nama</label>
-        <input type="text" id="nama">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    
+    <body>
+        <form id="formAnggota" action="">
+            <label for="nama">nama</label>
+            <input type="text" id="nama">
         <label for="kelas">kelas</label>
         <select name="kelas" id="kelas">
-            <option value="10">X</option>
-            <option value="11">XI</option>
-            <option value="12">XII</option>
+            <option value="" selected disabled hidden>Pilih kelas anggota</option>
+            <option value="X">X</option>
+            <option value="XI">XI</option>
+            <option value="XII">XII</option>
         </select>
+        <input type="submit" id="btnAnggota">
     </form>
     
     <table id="listAnggota">
@@ -26,33 +28,34 @@
                 <th>Kelas</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>Biru</td>
-                <td>XII</td>
-            </tr>
-        </tbody>
+        <tbody id="dataAnggota"></tbody>
     </table>
     
-    <form id="formTask" action="">
-        <label for="anggota">Pilih anggota</label>
-        <select name="anggota" id="anggota">
+    <form id="formTask" action="" 
+        <label for="kelasAnggota">Pilih anggota</label>
+        <select name="namaAnggota" id="namaAnggota">
             <!-- TODO: List anggota -->
         </select>
         <label for="kelasAnggota">Kelas</label>
         <select name="kelasAnggota" id="kelasAnggota" disabled>
             <!-- TODO: Otomatis terisi -->
+            <option value="" selected disabled hidden>Pilih kelas anggota</option>
+             <option value="X">X</option>
+             <option value="XI">XI</option>
+             <option value="XII">XII</option>
         </select>
         <label for="tugas">Tugas</label>
         <input type="text" id="tugas">
+        <input type="submit" id="btnTask">
     </form>
-    
+
     <table id="listTugas">
         <thead>
             <tr>
                 <th>Nama</th>
                 <th>Kelas</th>
                 <th>Tugas</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -60,9 +63,11 @@
                 <td>Biru</td>
                 <td>XII</td>
                 <td>Ngoding</td>
+                <td><button id="btnHapusTask">Hapus</button></td>
             </tr>
         </tbody>
     </table>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
