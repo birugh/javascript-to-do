@@ -167,6 +167,7 @@ function displayTask() {
 
     dataTask.forEach(function (item, index) {
         let tr = document.createElement("tr");
+        
         let nama = document.createElement("td");
         let kelas = document.createElement("td");
         let tugas = document.createElement("td");
@@ -190,6 +191,7 @@ function displayTask() {
 
         nama.textContent = item.nama;
         if (item.done) {
+            tr.classList.add("done");
             nama.classList.add("done");
             kelas.classList.add("done");
             tugas.classList.add("done");

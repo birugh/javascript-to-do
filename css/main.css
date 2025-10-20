@@ -1,6 +1,7 @@
 .done {
   text-decoration: line-through;
   color: var(--black);
+  background-color: rgb(212, 255, 212);
 }
 
 body {
