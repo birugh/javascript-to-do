@@ -1,0 +1,125 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: color .5s ease;
+  color: var(--shadow_gargoyle);
+}
+
+.btn:hover {
+  color: #1e1e1e;
+}
+
+.btn--primary {
+  background-color: var(--carbon_fiber);
+  color: var(--white);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.btn--primary--arrow {
+  background-color: var(--carbon_fiber);
+  color: var(--white);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.btn--primary--arrow::after {
+  content: url("../assets/arrow-right.svg");
+  width: 24px;
+  height: 24px;
+  margin-left: 6px;
+  display: inline-block;
+  transition: transform 0.5s ease;
+}
+
+.btn--primary:hover,
+.btn--primary--arrow:focus,
+.btn--primary--arrow:hover {
+  background-color: #545252;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.btn--primary--arrow:focus::after,
+.btn--primary--arrow:hover::after {
+  transform: translateX(4px);
+}
+
+.btn--secondary {
+  background-color: var(--white);
+  color: var(--carbon_fiber);
+}
+
+.btn--secondary::after {
+  content: url("../assets/icon/1ed6e6e3-f779-4f63-9580-3ce05d83feeb.svg");
+  width: 24px;
+  height: 24px;
+  margin-left: 6px;
+  display: inline-block;
+  transition: transform 0.5s ease;
+}
+
+.btn--secondary:focus::after,
+.btn--secondary:hover::after {
+  transform: translateX(4px);
+}
+
+.btn--underline {
+  padding: 8px 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  color: black;
+  background: none;
+}
+
+.btn--underline:focus,
+.btn--underline:hover {
+  text-decoration: none;
+}
+
+.btn--underline::after {
+  content: url("../assets/icon/1ed6e6e3-f779-4f63-9580-3ce05d83feeb.svg");
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  transition: transform 0.5s ease;
+}
+
+.btn--underline:focus::after,
+.btn--underline:hover::after {
+  transform: translateX(4px);
+}
+
+.btn--underline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background: currentColor;
+  transition: width 0.5s ease;
+}
+
+.btn--underline:focus::before,
+.btn--underline:hover::before {
+  width: 100%;
+}
+
+.nav__btn {
+  color: var(--shadow_gargoyle);
+  transition: color .5s ease;
+}
+
+.nav__btn:focus,
+.nav__btn:hover {
+  color: #1e1e1e;
+}

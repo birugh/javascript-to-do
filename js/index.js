@@ -18,7 +18,7 @@ data = [
 ]
 
 dataTask = [
-    { nama: "biru", kelas: "XI", task: "ngoding" },
+    { nama: "biru", kelas: "XI", task: "ngoding", done: false },
 ]
 
 readAnggota();
@@ -93,14 +93,13 @@ function readAnggota() {
 
 function displayAnggota() {
     tableAnggota.innerHTML = '';
-
-    if (dataTask.length === 0) {
+    if (dataAnggota.length === 0) {
         let tr = document.createElement("tr");
         let td = document.createElement("td");
         td.colSpan = 4;
         td.textContent = "Belum ada anggota";
         tr.appendChild(td);
-        tableTask.appendChild(tr);
+        tableAnggota.appendChild(tr);
         return;
     }
 
@@ -109,10 +108,14 @@ function displayAnggota() {
         let nama = document.createElement("td");
         let kelas = document.createElement("td");
         let action = document.createElement("td");
+        action.style.textAlign = 'center'
         let buttonHapus = document.createElement("button");
 
         buttonHapus.classList.add('btnHapusAnggota');
+        buttonHapus.classList.add('btn');
+        buttonHapus.classList.add('btn--secondary');
         buttonHapus.textContent = 'Hapus';
+        buttonHapus.dataset.index = index;
         buttonHapus.dataset.index = index;
 
         nama.textContent = item.nama;
@@ -152,7 +155,6 @@ function ResetInputAnggotaTask() {
 
 function displayTask() {
     tableTask.innerHTML = '';
-
     if (dataTask.length === 0) {
         let tr = document.createElement("tr");
         let td = document.createElement("td");
@@ -169,13 +171,29 @@ function displayTask() {
         let kelas = document.createElement("td");
         let tugas = document.createElement("td");
         let action = document.createElement("td");
+        action.style.textAlign = 'center'
         let buttonHapus = document.createElement("button");
 
         buttonHapus.classList.add('btnHapusTask');
+        buttonHapus.classList.add('btn');
+        buttonHapus.classList.add('btn--secondary');
         buttonHapus.textContent = 'Hapus';
         buttonHapus.dataset.index = index;
 
+        let buttonFinish = document.createElement("button");
+        buttonFinish.dataset.index = index;
+
+        buttonFinish.classList.add('btnFinish');
+        buttonFinish.classList.add('btn');
+        buttonFinish.classList.add('btn--primary');
+        buttonFinish.textContent = 'Selesai';
+
         nama.textContent = item.nama;
+        if (item.done) {
+            nama.classList.add("done");
+            kelas.classList.add("done");
+            tugas.classList.add("done");
+        }
         kelas.textContent = item.kelas;
         tugas.textContent = item.task;
 
@@ -184,10 +202,12 @@ function displayTask() {
         tr.appendChild(tugas);
         tr.appendChild(action);
         action.appendChild(buttonHapus);
+        action.appendChild(buttonFinish);
         tableTask.appendChild(tr);
     });
 
     pasangListenerHapusTask();
+    pasangListenerFinishTask();
 }
 
 function pasangListenerHapusTask() {
@@ -195,6 +215,15 @@ function pasangListenerHapusTask() {
         btn.addEventListener('click', function () {
             const index = btn.dataset.index;
             deleteTask(index);
+        });
+    });
+}
+
+function pasangListenerFinishTask() {
+    document.querySelectorAll('.btnFinish').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const index = btn.dataset.index;
+            finishTask(index);
         });
     });
 }
@@ -219,7 +248,7 @@ function createTask() {
     alert("Task berhasil ditambahkan");
     ResetInputAnggotaTask();
     displayTask();
-    
+
     data.find(function (item) {
         return item.nama === anggotaValue;
     })
@@ -230,6 +259,19 @@ function deleteTask(index) {
     dataTask.splice(index, 1);
     displayTask();
     alert('Task dihapus');
+}
+
+function finishTask(index) {
+    dataTask[index].done = !dataTask[index].done;
+    if (dataTask[index].done) {
+        alert('Task selesai');
+    }
+    else {
+        alert('Undo task');
+    }
+
+    displayTask();
+
 }
 
 btnSubmitTask.addEventListener("click", function () {
