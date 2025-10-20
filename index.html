@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="formAnggota" action="">
+        <label for="nama">nama</label>
+        <input type="text" id="nama">
+        <label for="kelas">kelas</label>
+        <select name="kelas" id="kelas">
+            <option value="10">X</option>
+            <option value="11">XI</option>
+            <option value="12">XII</option>
+        </select>
+    </form>
+    
+    <table id="listAnggota">
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Kelas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Biru</td>
+                <td>XII</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <form id="formTask" action="">
+        <label for="anggota">Pilih anggota</label>
+        <select name="anggota" id="anggota">
+            <!-- TODO: List anggota -->
+        </select>
+        <label for="kelasAnggota">Kelas</label>
+        <select name="kelasAnggota" id="kelasAnggota" disabled>
+            <!-- TODO: Otomatis terisi -->
+        </select>
+        <label for="tugas">Tugas</label>
+        <input type="text" id="tugas">
+    </form>
+    
+    <table id="listTugas">
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Kelas</th>
+                <th>Tugas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Biru</td>
+                <td>XII</td>
+                <td>Ngoding</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
