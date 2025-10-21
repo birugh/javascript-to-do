@@ -84,6 +84,7 @@ function createAnggota(data) {
 
 function readAnggota() {
     selectAnggota.innerHTML = '';
+    loadComponent();
     if (data !== null) {
         data.forEach(function (item, index) {
             let option = document.createElement("option");
@@ -92,6 +93,7 @@ function readAnggota() {
             selectAnggota.appendChild(option);
         });
     }
+    selectAnggota.value = '';
 }
 
 function displayAnggota() {
