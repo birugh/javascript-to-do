@@ -13,13 +13,16 @@ let formTask = document.getElementById("formTask");
 let tableTask = document.getElementById("dataTask");
 
 // ! Data Dummy
-data = [
+const data = [
     { nama: "biru", kelas: "XI" },
 ]
 
-dataTask = [
+const dataTask = [
     { nama: "biru", kelas: "XI", task: "ngoding", done: false },
 ]
+
+console.log(data.length + "" + dataTask.length);
+
 
 readAnggota();
 loadComponent();
@@ -59,7 +62,7 @@ function pasangListenerHapus() {
 }
 
 function createAnggota(data) {
-    const namaAnggotaValue = txtCreateNama.value;
+    const namaAnggotaValue = txtCreateNama.value.trim();
     const kelasValue = selectCreateKelas.value;
 
     if (!namaAnggotaValue || !kelasValue) {
@@ -93,10 +96,12 @@ function readAnggota() {
 
 function displayAnggota() {
     tableAnggota.innerHTML = '';
-    if (dataAnggota.length === 0) {
+    console.log(dataAnggota.length);
+    
+    if (data.length === 0) {
         let tr = document.createElement("tr");
         let td = document.createElement("td");
-        td.colSpan = 4;
+        td.colSpan = 3;
         td.textContent = "Belum ada anggota";
         tr.appendChild(td);
         tableAnggota.appendChild(tr);
@@ -132,10 +137,32 @@ function displayAnggota() {
 }
 
 function deleteAnggota(index) {
-    data.splice(index, 1);
+    let validation = confirm('Apakah anda yakin ingin menghapus anggota?');
+    if (!validation) {
+        return;
+    }
+    
+    let removedUser = data.splice(index, 1)[index];
+    for (i = dataTask.length - 1;i >= 0;i--) {
+        let item = dataTask[index];
+        if(!item) continue;
+
+        if(
+            
+            item.nama === removedUser.nama &&
+            item.kelas === removedUser.kelas
+        ) {
+            console.log('test');
+            dataTask.splice(i, 1)
+        }
+        else {
+            return;
+        }
+    }
     readAnggota();
     displayAnggota();
-    alert('Anggota dihapus');
+    displayTask();
+    alert('Anggota berhasil dihapus');
 }
 
 btnSubmitAnggota.addEventListener("click", function () {
@@ -155,6 +182,8 @@ function ResetInputAnggotaTask() {
 
 function displayTask() {
     tableTask.innerHTML = '';
+    console.log(dataTask.length);
+    
     if (dataTask.length === 0) {
         let tr = document.createElement("tr");
         let td = document.createElement("td");
@@ -167,7 +196,7 @@ function displayTask() {
 
     dataTask.forEach(function (item, index) {
         let tr = document.createElement("tr");
-        
+
         let nama = document.createElement("td");
         let kelas = document.createElement("td");
         let tugas = document.createElement("td");
@@ -258,9 +287,30 @@ function createTask() {
 }
 
 function deleteTask(index) {
-    dataTask.splice(index, 1);
+    let validation = confirm('Apakah anda yakin ingin menghapus task?');
+    if (!validation) {
+        return;
+    }
+
+    let removedTask = dataTask.splice(index, 1)[index];
+    for (i = data.length - 1;i >= 0;i--) {
+        let item = data[index];
+        if(!item) continue;
+
+        if(
+            item.nama === removedTask.nama &&
+            item.kelas === removedTask.kelas
+        ) {
+            data.splice(i, 1)
+        }
+        else {
+            return;
+        }
+    }
+
+    displayAnggota();
     displayTask();
-    alert('Task dihapus');
+    alert('Task berhasil dihapus');
 }
 
 function finishTask(index) {

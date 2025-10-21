@@ -1,14 +1,15 @@
-.container {
-    width: 100%;
-    margin: 0;
-    padding: 0 calc(var(--gutter));
-}
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 0 192px;
+    }
 
 .grid-row {
     display: flex;
     flex-wrap: wrap;
     margin-left: calc(var(--gutter) * -0.5);
     margin-right: calc(var(--gutter) * -0.5);
+    /* overflow-x: auto */
 }
 
 [class*="col-"] {

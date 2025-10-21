@@ -5,73 +5,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/component.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/grid.css">
+    <link rel="stylesheet" href="/css/component.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/resp.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="grid-row no-gutter form">
-            <form onsubmit="" id="formAnggota" action="">
-                <label for="nama">Nama</label>
-                <input type="text" id="nama" placeholder="Masukkan nama anggota">
-                <label for="kelas">Kelas</label>
-                <select name="kelas" id="kelas">
-                    <option value="" selected disabled hidden>Pilih kelas anggota</option>
-                    <option value="X">X</option>
-                    <option value="XI">XI</option>
-                    <option value="XII">XII</option>
-                </select>
-                <input type="submit" id="btnAnggota" class="btn btn--primary">
-            </form>
+    <header class="container">
+        <nav class="grid-row">
+            <div class="nav__logo col-2 col-xl-4 col-md-6">
+                <h1>BrainStorm Squad</h1>
+            </div>
+            <div class="nav__content grid-row col-10 col-xl-8">
+                <a class="btn" href="#anggota">Anggota</a>
+                <a class="btn" href="#task">Tugas</a>
+            </div>
+            <div class="col-6 nav__mobile col-xxl-1 col-md-6">
+                <div class="hamburger__menu">
+                    <span class="menu__linear"></span>
+                    <span class="menu__linear"></span>
+                    <span class="menu__linear"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main id="top" class="mt-16 mb-6">
+        <div class="container">
+            <section id="anggota">
+                <div class="grid-row no-gutter form">
+                    <h2 class="mb-6">Form Anggota</h2>
+                    <form onsubmit="" id="formAnggota" action="">
+                        <label for="nama">Nama</label>
+                        <input type="text" id="nama" placeholder="Masukkan nama anggota">
+                        <label for="kelas">Kelas</label>
+                        <select name="kelas" id="kelas">
+                            <option value="" selected disabled hidden>Pilih kelas anggota</option>
+                            <option value="X">X</option>
+                            <option value="XI">XI</option>
+                            <option value="XII">XII</option>
+                        </select>
+                        <input type="submit" id="btnAnggota" class="btn btn--primary">
+                    </form>
     
-            <table id="listAnggota">
-                <thead>
-                    <tr>
-                        <th>Nama</th>
-                        <th>Kelas</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="dataAnggota"></tbody>
-            </table><br>
-        </div>
-        <div class="grid-row no-gutter form">
-            <form id="formTask" action="">
-                <label for="kelasAnggota">Pilih anggota</label>
-                <select name="namaAnggota" id="namaAnggota">
-                    <!-- TODO: List anggota -->
-                </select>
-                <label for="kelasAnggota">Kelas</label>
-                <select name="kelasAnggota" id="kelasAnggota" disabled>
-                    <!-- TODO: Otomatis terisi -->
-                    <option value="" selected disabled hidden>Pilih kelas anggota</option>
-                    <option value="X">X</option>
-                    <option value="XI">XI</option>
-                    <option value="XII">XII</option>
-                </select>
-                <label for="tugas">Tugas</label>
-                <input type="text" id="tugas" placeholder="Masukkan tugas untuk anggotanya">
-                <input type="submit" id="btnTask" class="btn btn--primary">
-            </form>
+                    <div class="table__anggota">
+                        <table id="listAnggota">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Kelas</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dataAnggota"></tbody>
+                        </table><br>
+                    </div>
+                </div>
+            </section>
+            <section id="task">
+                <div class="grid-row no-gutter form">
+                    <h2 class="mbt-6">Form tugas anggota</h2>
+                    <form id="formTask" action="">
+                        <label for="kelasAnggota">Pilih anggota</label>
+                        <select name="namaAnggota" id="namaAnggota">
+                            <!-- TODO: List anggota -->
+                        </select>
+                        <label for="kelasAnggota">Kelas</label>
+                        <select name="kelasAnggota" id="kelasAnggota" disabled>
+                            <!-- TODO: Otomatis terisi -->
+                            <option value="" selected disabled hidden>Pilih kelas anggota</option>
+                            <option value="X">X</option>
+                            <option value="XI">XI</option>
+                            <option value="XII">XII</option>
+                        </select>
+                        <label for="tugas">Tugas</label>
+                        <input type="text" id="tugas" placeholder="Masukkan tugas untuk anggotanya">
+                        <input type="submit" id="btnTask" class="btn btn--primary">
+                    </form>
     
-            <table id="listTask">
-                <thead>
-                    <tr>
-                        <th>Nama</th>
-                        <th>Kelas</th>
-                        <th>Tugas</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="dataTask">
-                </tbody>
-            </table>
+                    <table id="listTask">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Kelas</th>
+                                <th>Tugas</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTask">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </div>
-    </div>
+    </main>
     <script src="js/index.js"></script>
 </body>
 
