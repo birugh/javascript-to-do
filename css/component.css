@@ -66,7 +66,8 @@ table thead {
     color: var(--white);
 }
 
-table td, table th {
+table td,
+table th {
     padding: 12px;
 }
 

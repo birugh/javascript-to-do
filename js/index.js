@@ -99,7 +99,7 @@ function readAnggota() {
 function displayAnggota() {
     tableAnggota.innerHTML = '';
     console.log(dataAnggota.length);
-    
+
     if (data.length === 0) {
         let tr = document.createElement("tr");
         let td = document.createElement("td");
@@ -143,14 +143,14 @@ function deleteAnggota(index) {
     if (!validation) {
         return;
     }
-    
-    let removedUser = data.splice(index, 1)[index];
-    for (i = dataTask.length - 1;i >= 0;i--) {
-        let item = dataTask[index];
-        if(!item) continue;
 
-        if(
-            
+    let removedUser = data.splice(index, 1)[index];
+    for (i = dataTask.length - 1; i >= 0; i--) {
+        let item = dataTask[index];
+        if (!item) continue;
+
+        if (
+
             item.nama === removedUser.nama &&
             item.kelas === removedUser.kelas
         ) {
@@ -185,7 +185,7 @@ function ResetInputAnggotaTask() {
 function displayTask() {
     tableTask.innerHTML = '';
     console.log(dataTask.length);
-    
+
     if (dataTask.length === 0) {
         let tr = document.createElement("tr");
         let td = document.createElement("td");
@@ -295,11 +295,11 @@ function deleteTask(index) {
     }
 
     let removedTask = dataTask.splice(index, 1)[index];
-    for (i = data.length - 1;i >= 0;i--) {
+    for (i = data.length - 1; i >= 0; i--) {
         let item = data[index];
-        if(!item) continue;
+        if (!item) continue;
 
-        if(
+        if (
             item.nama === removedTask.nama &&
             item.kelas === removedTask.kelas
         ) {

@@ -1,19 +1,9 @@
-
-
-body {
-    background-color: #fff;
-}
-
 table {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
 }
 
-.table__anggota {
-    /* width: 100%; */
-    overflow-x: auto;
-}
 
 form {
     width: 100%;
