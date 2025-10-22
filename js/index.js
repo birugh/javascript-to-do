@@ -65,8 +65,35 @@ function createAnggota(data) {
     const namaAnggotaValue = txtCreateNama.value.trim();
     const kelasValue = selectCreateKelas.value;
 
-    if (!namaAnggotaValue || !kelasValue) {
-        alert("Lengkapi semua input anggota");
+    if (!namaAnggotaValue) {
+        alert("Nama anggota tidak boleh kosong.");
+        txtCreateNama.focus();
+        return;
+    }
+
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    if (!nameRegex.test(namaAnggotaValue)) {
+        alert("Nama anggota hanya boleh berisi huruf dan spasi.");
+        txtCreateNama.focus();
+        return;
+    }
+
+    if (namaAnggotaValue.length < 2) {
+        alert("Nama anggota minimal 2 karakter.");
+        txtCreateNama.focus();
+        return;
+    }
+
+    if (!kelasValue) {
+        alert("Pilih kelas anggota.");
+        selectCreateKelas.focus();
+        return;
+    }
+
+    const existingAnggota = data.find(anggota => anggota.nama.toLowerCase() === namaAnggotaValue.toLowerCase());
+    if (existingAnggota) {
+        alert("Anggota dengan nama tersebut sudah ada.");
+        txtCreateNama.focus();
         return;
     }
 
@@ -266,8 +293,41 @@ function createTask() {
     const kelasValue = selectKelas.value;
     const tugasValue = txtTugas.value.trim();
 
-    if (!anggotaValue || !kelasValue || !tugasValue) {
-        alert("Lengkapi semua input task");
+    if (!anggotaValue) {
+        alert("Pilih anggota untuk task.");
+        selectAnggota.focus();
+        return;
+    }
+
+    if (!kelasValue) {
+        alert("Kelas harus terisi otomatis setelah memilih anggota.");
+        return;
+    }
+
+    if (!tugasValue) {
+        alert("Tugas tidak boleh kosong.");
+        txtTugas.focus();
+        return;
+    }
+
+    // Validate tugas format: only letters, numbers, spaces, periods, and commas
+    const tugasRegex = /^[a-zA-Z0-9\s.,]+$/;
+    if (!tugasRegex.test(tugasValue)) {
+        alert("Tugas hanya boleh berisi huruf, angka, spasi, titik, dan koma.");
+        txtTugas.focus();
+        return;
+    }
+
+    if (tugasValue.length < 3) {
+        alert("Tugas minimal 3 karakter.");
+        txtTugas.focus();
+        return;
+    }
+
+    const existingTask = dataTask.find(task => task.nama === anggotaValue && task.task.toLowerCase() === tugasValue.toLowerCase());
+    if (existingTask) {
+        alert("Task dengan nama tersebut sudah ada untuk anggota ini.");
+        txtTugas.focus();
         return;
     }
 
@@ -293,23 +353,8 @@ function deleteTask(index) {
     if (!validation) {
         return;
     }
-
-    let removedTask = dataTask.splice(index, 1)[index];
-    for (i = data.length - 1; i >= 0; i--) {
-        let item = data[index];
-        if (!item) continue;
-
-        if (
-            item.nama === removedTask.nama &&
-            item.kelas === removedTask.kelas
-        ) {
-            data.splice(i, 1)
-        }
-        else {
-            return;
-        }
-    }
-
+    
+    dataTask.splice(index, 1);
     displayAnggota();
     displayTask();
     alert('Task berhasil dihapus');

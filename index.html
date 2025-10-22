@@ -39,7 +39,7 @@
                 <div class="grid-row no-gutter form">
                     <h2 class="mb-6">Form Anggota</h2>
                     <form onsubmit="" id="formAnggota" action="">
-                        <label for="nama">Nama</label>
+                        <label for="nama">Nama Lengkap</label>
                         <input type="text" id="nama" placeholder="Masukkan nama anggota">
                         <label for="kelas">Kelas</label>
                         <select name="kelas" id="kelas">
@@ -85,19 +85,20 @@
                         <input type="text" id="tugas" placeholder="Masukkan tugas untuk anggotanya">
                         <input type="submit" id="btnTask" class="btn btn--primary">
                     </form>
-    
-                    <table id="listTask">
-                        <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Kelas</th>
-                                <th>Tugas</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="dataTask">
-                        </tbody>
-                    </table>
+                    <div class="table-wrapper">
+                        <table id="listTask">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Kelas</th>
+                                    <th>Tugas</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dataTask">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
         </div>

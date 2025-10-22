@@ -26,3 +26,8 @@ form {
     color: var(--black);
     background-color: rgb(212, 255, 212);
 }
+
+.table-wrapper {
+    overflow-x: auto;
+    width: 100%;
+}
